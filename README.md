@@ -1,4 +1,4 @@
-# Eaon Agent
+# Eaon Agent - Made by Mincoffical
 
 **Token-efficient terminal AI coding agent.** Connect whatever providers you want. Two-model architecture: a strong **main** model does the agentic work, a cheap **compressor** model eats the context. Caveman mode on by default. macOS + Linux.
 
