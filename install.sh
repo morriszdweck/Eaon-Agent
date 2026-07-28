@@ -63,8 +63,28 @@ if [ ! -w "$NPM_PREFIX/lib" ] 2>/dev/null && [ ! -w "$NPM_PREFIX" ] 2>/dev/null;
 fi
 
 # ---------- 3. install / upgrade ----------
+# NOTE: `npm i -g github:...` is unreliable for TS packages (npm runs `prepare`
+# for git deps before devDependencies exist, so tsc is missing). Instead:
+# clone → npm install (dev deps) → build → pack → install the tarball.
 say "Installing eaon-agent from github.com/$REPO ..."
-npm install -g "github:$REPO" || die "npm install failed."
+TMP="$(mktemp -d)"
+trap 'rm -rf "$TMP"' EXIT
+
+if command -v git >/dev/null 2>&1; then
+  git clone --quiet --depth 1 "https://github.com/$REPO" "$TMP/src" || die "git clone failed."
+else
+  warn "git not found — downloading tarball instead."
+  curl -fsSL "https://codeload.github.com/$REPO/tar.gz/refs/heads/main" -o "$TMP/src.tgz" || die "download failed."
+  mkdir -p "$TMP/src" && tar -xzf "$TMP/src.tgz" -C "$TMP/src" --strip-components=1 || die "extract failed."
+fi
+
+(
+  cd "$TMP/src"
+  npm install --no-audit --no-fund >/dev/null 2>&1 || die "npm install (deps) failed."
+  npm run build >/dev/null 2>&1 || die "build failed."
+  npm pack --quiet >/dev/null 2>&1 || die "npm pack failed."
+  npm install -g ./eaon-agent-*.tgz || die "npm install -g failed."
+) || exit 1
 
 command -v eaon-agent >/dev/null 2>&1 || die "Installed, but 'eaon-agent' is not on PATH. Add $NPM_PREFIX/bin to your PATH."
 ok "eaon-agent installed: $(eaon-agent --version 2>/dev/null || echo ok)"
