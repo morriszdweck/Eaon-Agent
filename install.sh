@@ -66,12 +66,12 @@ fi
 say "Installing eaon-agent from github.com/$REPO ..."
 npm install -g "github:$REPO" || die "npm install failed."
 
-command -v eaon >/dev/null 2>&1 || die "Installed, but 'eaon' is not on PATH. Add $NPM_PREFIX/bin to your PATH."
-ok "eaon installed: $(eaon --version 2>/dev/null || echo ok)"
+command -v eaon-agent >/dev/null 2>&1 || die "Installed, but 'eaon-agent' is not on PATH. Add $NPM_PREFIX/bin to your PATH."
+ok "eaon-agent installed: $(eaon-agent --version 2>/dev/null || echo ok)"
 
 # ---------- 4. done ----------
 say ""
 say "${BOLD}Done.${RESET} Run:"
-say "  ${GREEN}eaon setup${RESET}   # connect your providers (first run does this automatically)"
-say "  ${GREEN}eaon${RESET}         # start the agent"
+say "  ${GREEN}eaon-agent setup${RESET}   # connect your providers (first run does this automatically)"
+say "  ${GREEN}eaon-agent${RESET}         # start the agent"
 say ""

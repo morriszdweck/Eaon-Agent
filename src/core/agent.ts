@@ -42,7 +42,7 @@ export class Agent {
   }
 
   private currentModel(): ModelRef {
-    if (!this.rt.cfg.main) throw new Error("No main model configured. Run: eaon setup");
+    if (!this.rt.cfg.main) throw new Error("No main model configured. Run: eaon-agent setup");
     return this.rt.cfg.main;
   }
 

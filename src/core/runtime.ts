@@ -62,7 +62,7 @@ export class Runtime {
 
   listModelsText(): string {
     const all = listAllModels(this.cfg);
-    if (!all.length) return "No models configured. Run: eaon setup";
+    if (!all.length) return "No models configured. Run: eaon-agent setup";
     return all.map((m) => `- ${m.provider}/${m.model}${m.role ? ` (${m.role})` : ""}`).join("\n");
   }
 

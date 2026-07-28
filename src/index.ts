@@ -9,7 +9,7 @@ import { runHeadless } from "./headless.js";
 const program = new Command();
 
 program
-  .name("eaon")
+  .name("eaon-agent")
   .description("Eaon Agent — token-efficient terminal AI coding agent")
   .version("0.1.0");
 
@@ -33,7 +33,7 @@ program
       process.exit(code);
     }
     if (!process.stdin.isTTY || !process.stdout.isTTY) {
-      console.error('Interactive mode needs a real terminal. Headless usage: eaon -p "your prompt" [--yes] [--stats]');
+      console.error('Interactive mode needs a real terminal. Headless usage: eaon-agent -p "your prompt" [--yes] [--stats]');
       process.exit(1);
     }
     const { Runtime } = await import("./core/runtime.js");

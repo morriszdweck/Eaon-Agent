@@ -10,11 +10,11 @@
 curl -fsSL https://raw.githubusercontent.com/sanscreates/Eaon-Agent/main/install.sh | bash
 ```
 
-Installs Node ≥18 if needed, then `eaon` globally. First run drops you into onboarding.
+Installs Node ≥18 if needed, then `eaon-agent` globally. First run drops you into onboarding.
 
 ```bash
-eaon setup   # connect providers, pick main + compressor models
-eaon         # start
+eaon-agent setup   # connect providers, pick main + compressor models
+eaon-agent         # start
 ```
 
 Upgrade: re-run the same curl line. Uninstall: `npm rm -g eaon-agent`.
@@ -97,8 +97,8 @@ Default `confirm`: every shell command and file write asks first — `[y]` once,
 ## Headless
 
 ```bash
-eaon -p "fix the failing test in src/auth" --stats
-eaon -p "summarize this repo" -y -m deepseek-chat   # -y auto-approves, -m model override
+eaon-agent -p "fix the failing test in src/auth" --stats
+eaon-agent -p "summarize this repo" -y -m deepseek-chat   # -y auto-approves, -m model override
 ```
 
 ## Project memory
@@ -107,7 +107,4 @@ eaon -p "summarize this repo" -y -m deepseek-chat   # -y auto-approves, -m model
 
 ## License
 
-WTFPL — see [LICENSE](./LICENSE). Caveman-style compression idea credit: [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) (MIT).
-<a href="http://www.wtfpl.net/"><img
-       src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png"
-       width="80" height="15" alt="WTFPL" /></a>
+GPL-3.0 — see [LICENSE](./LICENSE). Caveman-style compression idea credit: [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) (MIT).

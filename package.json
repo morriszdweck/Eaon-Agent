@@ -4,7 +4,7 @@
   "description": "Terminal AI coding agent built for maximum token efficiency. Two-model context compression, sub-agents, macros, caveman mode, MCP, DuckDuckGo search.",
   "type": "module",
   "bin": {
-    "eaon": "dist/index.js"
+    "eaon-agent": "dist/index.js"
   },
   "engines": {
     "node": ">=18.0.0"

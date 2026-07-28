@@ -1,4 +1,4 @@
-// Headless mode: eaon -p "prompt" [--yes] [--model x] [--max-turns n]
+// Headless mode: eaon-agent -p "prompt" [--yes] [--model x] [--max-turns n]
 // Prints the agent's work to stdout. Permissions: interactive y/a/n on a TTY,
 // deny otherwise (unless --yes).
 
@@ -57,7 +57,7 @@ export async function runHeadless(opts: HeadlessOptions): Promise<number> {
   });
 
   if (!rt.cfg.main) {
-    process.stderr.write("No provider configured. Run: eaon setup\n");
+    process.stderr.write("No provider configured. Run: eaon-agent setup\n");
     return 1;
   }
 
