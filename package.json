@@ -1,0 +1,58 @@
+{
+  "name": "eaon-agent",
+  "version": "0.1.0",
+  "description": "Terminal AI coding agent built for maximum token efficiency. Two-model context compression, sub-agents, macros, caveman mode, MCP, DuckDuckGo search.",
+  "type": "module",
+  "bin": {
+    "eaon": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "install.sh"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepare": "npm run build",
+    "prepack": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "tsc -p tsconfig.json && node dist/index.js"
+  },
+  "keywords": [
+    "ai",
+    "coding-agent",
+    "terminal",
+    "tui",
+    "llm",
+    "cli",
+    "token-efficiency",
+    "mcp"
+  ],
+  "author": "sanscreates",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanscreates/Eaon-Agent.git"
+  },
+  "homepage": "https://github.com/sanscreates/Eaon-Agent",
+  "bugs": "https://github.com/sanscreates/Eaon-Agent/issues",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "ink": "^4.4.1",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "typescript": "^5.5.3"
+  }
+}
